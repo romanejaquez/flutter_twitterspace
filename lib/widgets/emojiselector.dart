@@ -30,7 +30,6 @@ class _EmojiSelectorState extends State<EmojiSelector> with SingleTickerProvider
     super.dispose();
   }
   
-  
   @override
   Widget build(BuildContext context) {
     return Consumer<EmojiSelectorService>(

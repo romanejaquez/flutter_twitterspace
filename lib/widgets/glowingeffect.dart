@@ -20,11 +20,11 @@ class GlowingEffect extends StatefulWidget {
 
 class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateMixin {
   
-  AnimationController? innerCircle;
-  AnimationController? outerCircle;
-  AnimationController? thirdCircle;
-  Timer? outerTimer;
-  Timer? innerTimer;
+  late AnimationController innerCircle;
+  late AnimationController outerCircle;
+  late AnimationController thirdCircle;
+  late Timer outerTimer;
+  late Timer innerTimer;
 
   @override
   void initState() {
@@ -48,30 +48,23 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
 
   @override
   void dispose() {
-    if (mounted) {
-      if (outerTimer != null) {
-        outerTimer!.cancel();
-      }
+    outerTimer.cancel();
+    innerTimer.cancel();
 
-      if (innerTimer != null) {
-        innerTimer!.cancel();
-      }
-
-      innerCircle?.dispose();
-      outerCircle?.dispose();
-      thirdCircle?.dispose();
-      super.dispose();
-    }
+    innerCircle.dispose();
+    outerCircle.dispose();
+    thirdCircle.dispose();
+    super.dispose();
   }
   
   @override
   Widget build(BuildContext context) {
 
     outerTimer = Timer(const Duration(milliseconds: 500), () {
-      outerCircle?.repeat(reverse: false);
+      outerCircle.repeat(reverse: false);
 
       innerTimer = Timer(const Duration(milliseconds: 500), () {
-        thirdCircle?.repeat(reverse: false);
+        thirdCircle.repeat(reverse: false);
       });
     });
 
@@ -84,10 +77,10 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
           children: [
             FadeTransition(
               opacity: Tween<double>(begin: 1.0, end: 0.0)
-              .animate(CurvedAnimation(parent: thirdCircle!, curve: Curves.easeInOut)),
+              .animate(CurvedAnimation(parent: thirdCircle, curve: Curves.easeInOut)),
               child: ScaleTransition(
                 scale: Tween<double>(begin: 1.0, end: 2.0)
-                .animate(CurvedAnimation(parent: thirdCircle!, curve: Curves.easeInOut)),
+                .animate(CurvedAnimation(parent: thirdCircle, curve: Curves.easeInOut)),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ClipOval(
@@ -100,10 +93,10 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
             ),
             FadeTransition(
               opacity: Tween<double>(begin: 1.0, end: 0.0)
-              .animate(CurvedAnimation(parent: outerCircle!, curve: Curves.easeInOut)),
+              .animate(CurvedAnimation(parent: outerCircle, curve: Curves.easeInOut)),
               child: ScaleTransition(
                 scale: Tween<double>(begin: 1.0, end: 2.0)
-                .animate(CurvedAnimation(parent: outerCircle!, curve: Curves.easeInOut)),
+                .animate(CurvedAnimation(parent: outerCircle, curve: Curves.easeInOut)),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ClipOval(
@@ -116,10 +109,10 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
             ),
             FadeTransition(
               opacity: Tween<double>(begin: 1.0, end: 0.0)
-              .animate(CurvedAnimation(parent: innerCircle!, curve: Curves.easeInOut)),
+              .animate(CurvedAnimation(parent: innerCircle, curve: Curves.easeInOut)),
               child: ScaleTransition(
                 scale: Tween<double>(begin: 1.0, end: 2.0)
-                .animate(CurvedAnimation(parent: innerCircle!, curve: Curves.easeInOut)),
+                .animate(CurvedAnimation(parent: innerCircle, curve: Curves.easeInOut)),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ClipOval(

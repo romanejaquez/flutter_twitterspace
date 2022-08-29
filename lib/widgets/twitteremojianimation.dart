@@ -36,7 +36,6 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
       duration: const Duration(milliseconds: 250)
     );
 
-
     emojiScaleSmaller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 250)
