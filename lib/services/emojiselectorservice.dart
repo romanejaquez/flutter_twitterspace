@@ -8,4 +8,9 @@ class EmojiSelectorService extends ChangeNotifier {
     isVisible = visible;
     notifyListeners();
   }
+
+  void toggleEmojiSelectorVisibility() {
+    isVisible = !isVisible;
+    notifyListeners();
+  }
 }

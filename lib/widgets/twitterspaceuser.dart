@@ -5,8 +5,8 @@ import 'package:twitter_spaces_flutter/widgets/twitteruserspeakingstatus.dart';
 
 class TwitterUser extends StatefulWidget {
 
-  UserModel userModel;
-  TwitterUser({Key? key, required this.userModel}) : super(key: key);
+  final UserModel userModel;
+  const TwitterUser({Key? key, required this.userModel}) : super(key: key);
 
   @override
   State<TwitterUser> createState() => _TwitterUserState();
@@ -22,9 +22,9 @@ class _TwitterUserState extends State<TwitterUser> {
         mainAxisSize: MainAxisSize.min,
         children: [
           TwitterUserAvatar(user: widget.userModel),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(widget.userModel.name,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold
             )
@@ -35,7 +35,7 @@ class _TwitterUserState extends State<TwitterUser> {
               TwitterUserSpeakingStatus(userModel: widget.userModel),
               Text(widget.userModel.title,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                 )
               )

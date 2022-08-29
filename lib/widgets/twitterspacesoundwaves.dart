@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:twitter_spaces_flutter/helpers/twittercolors.dart';
 
 class TwitterSpaceSoundWaves extends StatefulWidget {
   TwitterSpaceSoundWaves({Key? key}) : super(key: key);
@@ -11,7 +12,6 @@ class TwitterSpaceSoundWaves extends StatefulWidget {
 class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with TickerProviderStateMixin {
   late AnimationController ctrlSide;
   late AnimationController ctrlMiddle;
-  late AnimationController ctrlCenter;
   List<AnimationController> barCtrls = [];
 
   @override
@@ -37,20 +37,10 @@ class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with Ti
     ctrlMiddle.addListener(() {
       setState(() {});
     });
-
-    ctrlCenter = AnimationController(
-      vsync: this,
-      lowerBound: 2,
-      upperBound: 10,
-      duration: const Duration(milliseconds: 250)
-    )..repeat(reverse: true);
-    ctrlCenter.addListener(() {
-      setState(() {});
-    });
     
     barCtrls.add(ctrlSide);
     barCtrls.add(ctrlMiddle);
-    barCtrls.add(ctrlCenter);
+    barCtrls.add(ctrlSide);
     barCtrls.add(ctrlMiddle);
     barCtrls.add(ctrlSide);
   }
@@ -60,7 +50,6 @@ class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with Ti
   void dispose() {
     ctrlSide.dispose();
     ctrlMiddle.dispose();
-    ctrlCenter.dispose();
     super.dispose();
   }
 
@@ -75,7 +64,7 @@ class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with Ti
             width: 3,
             height: barCtrls[index].value,
             decoration: BoxDecoration(
-              color: Color(0xFF7366D7),
+              color: TwitterColors.mainColor,
               borderRadius: BorderRadius.circular(20)
             )
           );

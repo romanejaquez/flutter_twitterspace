@@ -15,7 +15,7 @@ class _TwitterSpaceTitleState extends State<TwitterSpaceTitle> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: const [
         SizedBox(height: 10),
         Text.rich(
           TextSpan(

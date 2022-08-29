@@ -1,10 +1,9 @@
 
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twitter_spaces_flutter/models/usermodel.dart';
 import 'package:twitter_spaces_flutter/services/emojiservice.dart';
+import 'package:twitter_spaces_flutter/widgets/twitteremojianimation.dart';
 
 class TwitterUserAvatar extends StatefulWidget {
 
@@ -15,85 +14,9 @@ class TwitterUserAvatar extends StatefulWidget {
   State<TwitterUserAvatar> createState() => _TwitterUserAvatarState();
 }
 
-class _TwitterUserAvatarState extends State<TwitterUserAvatar> with TickerProviderStateMixin {
+class _TwitterUserAvatarState extends State<TwitterUserAvatar> {
   
-  late AnimationController emojiCtrl;
-  late AnimationController emojiScaleSmaller;
-  late AnimationController emojiMove;
-  Timer emojiTimer1 = Timer(Duration.zero, () {});
-  Timer emojiTimer2 = Timer(Duration.zero, () {});
-  Timer emojiTimer3 = Timer(Duration.zero, () {});
-
-  @override
-  void initState() {
-    super.initState();
-
-    emojiCtrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 250)
-    );
-
-
-    emojiScaleSmaller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 250)
-    );
-
-    emojiMove = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 250)
-    );
-  }
-
-  void executeEmojiAnimation() {
-    emojiCtrl.forward().then((s) {
-      emojiTimer1 = Timer(const Duration(seconds: 2), () {
-        emojiScaleSmaller.forward().then((f) {
-
-         emojiTimer2 = Timer(const Duration(seconds: 2), () {
-            emojiMove.forward();
-            emojiCtrl.reverse().then((value) {
-              
-              emojiTimer3 = Timer(const Duration(seconds: 1), () {
-                emojiCtrl.reset();
-                emojiScaleSmaller.reset();
-                emojiMove.reset();
-              });
-            });
-          });
-        });
-      });
-    });
-  }
-
-  void resetEmojiAnimation() {
-    emojiCtrl.reset();
-    emojiScaleSmaller.reset();
-    emojiMove.reset();
-
-    emojiTimer1.cancel();
-    emojiTimer2.cancel();
-    emojiTimer3.cancel();
-  }
-
-  @override
-  void dispose() {
-    emojiCtrl.dispose();
-    emojiScaleSmaller.dispose();
-    emojiMove.dispose();
-
-    emojiTimer1.cancel();
-    emojiTimer2.cancel();
-    emojiTimer3.cancel();
-
-    super.dispose();
-  }
-
-  bool animationsAreDone() {
-    return (!emojiCtrl.isAnimating && emojiCtrl.isCompleted) ||
-    (!emojiScaleSmaller.isAnimating && emojiScaleSmaller.isCompleted) || 
-    (!emojiMove.isAnimating && emojiMove.isCompleted);
-  }
+  List<Widget> emojiMsgWidgets = [];
 
   @override
   Widget build(BuildContext context) {
@@ -114,45 +37,29 @@ class _TwitterUserAvatarState extends State<TwitterUserAvatar> with TickerProvid
             builder: (context, eService, child) {
 
               if (eService.currentMessage.uId == widget.user.uid) {
-                //if (animationsAreDone()) {
-                  resetEmojiAnimation();
-                  executeEmojiAnimation();
-                //}
                 
-              }
-              else {
-                resetEmojiAnimation();
+                var emoji = eService.currentMessage.emoji;
+                var emojiKey = GlobalKey();
+
+                emojiMsgWidgets.add(
+                  TwitterEmojiAnimation(
+                    key: emojiKey,
+                    emoji: emoji,
+                    onAnimationDone: (Key? key) {
+                      if (emojiMsgWidgets.where((e) => e.key == key).isNotEmpty) {
+                        var doneEmoji = emojiMsgWidgets.where((e) => e.key == key).first;
+                        emojiMsgWidgets.remove(doneEmoji);
+                      }
+                    }
+                  )
+                );
               }
 
-              return SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0.0, 0.0),
-                  end: const Offset(0.30, -0.30)
-                ).animate(CurvedAnimation(parent: emojiScaleSmaller, curve: Curves.easeInOut)),
-                child: ScaleTransition(
-                  scale: Tween<double>(begin: 1.0, end: 0.5).
-                    animate(CurvedAnimation(parent: emojiScaleSmaller, curve: Curves.easeInOut)),
-                  child: ScaleTransition(
-                    scale: Tween<double>(begin: 0.0, end: 1.01).
-                    animate(CurvedAnimation(parent: emojiCtrl, curve: Curves.easeInOut)),
-                    child: ClipOval(
-                      child: Container(
-                        color: Colors.black,
-                        width: 70,
-                        alignment: Alignment.center,
-                          height: 70,
-                          child: Image.asset('assets/imgs/emoji_${eService.currentMessage.emoji.name}.png',
-                            width: 45,
-                            height: 45,
-                            fit: BoxFit.contain
-                          )
-                      )
-                    ),
-                  ),
-                ),
+              return Stack(
+                children: emojiMsgWidgets
               );
             }
-          )
+          ),
         ]
       ),
     );

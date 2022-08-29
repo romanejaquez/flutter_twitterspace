@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:twitter_spaces_flutter/helpers/twitter_space_icons.dart';
+import 'package:twitter_spaces_flutter/helpers/twittercolors.dart';
 import 'package:twitter_spaces_flutter/services/emojiselectorservice.dart';
 
 class TwitterSpaceFooter extends StatelessWidget {
@@ -25,37 +26,37 @@ class TwitterSpaceFooter extends StatelessWidget {
               highlightColor: Colors.white.withOpacity(0.1),
               splashColor: Colors.white.withOpacity(0.1),
               onTap: () {}, 
-              child: Padding(
-                padding: const EdgeInsets.all(25),
-                child: const Icon(TwitterSpace.mic_off, color: Colors.red))
+              child: const Padding(
+                padding: EdgeInsets.all(25),
+                child: Icon(TwitterSpace.mic_off, color: TwitterColors.micOffColor))
             ),
           ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Icon(TwitterSpace.people, color: Colors.white, size: 20),
-                SizedBox(width: 20),
+                const Icon(TwitterSpace.people, color: Colors.white, size: 20),
+                const SizedBox(width: 20),
                 IconButton(
                   onPressed: () {
-                    ejService.setEmojiSelectorVisibility(true);
+                    ejService.toggleEmojiSelectorVisibility();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     TwitterSpace.emotion_add, 
                     color: Colors.white, 
                     size: 20
                   )
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Container(
                   padding: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
                   decoration: BoxDecoration(
-                    color: Color(0xFF7366D7),
+                    color: TwitterColors.mainColor,
                     borderRadius: BorderRadius.circular(30)
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
+                    children: const [
                       Icon(TwitterSpace.messages, color: Colors.white, size: 20),
                       SizedBox(width: 10),
                       Text('17', style: TextStyle(fontSize: 15, color: Colors.white, fontWeight: FontWeight.bold))

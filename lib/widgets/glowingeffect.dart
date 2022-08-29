@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:twitter_spaces_flutter/helpers/twitter_space_icons.dart';
+import 'package:twitter_spaces_flutter/helpers/twittercolors.dart';
 
 class GlowingEffect extends StatefulWidget {
 
@@ -91,7 +92,7 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
                   padding: const EdgeInsets.all(20.0),
                   child: ClipOval(
                     child: Container(
-                      color: Color(0xFF7366D7).withOpacity(0.5)
+                      color: TwitterColors.mainColor.withOpacity(0.5)
                     ),
                   ),
                 ),
@@ -107,7 +108,7 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
                   padding: const EdgeInsets.all(20.0),
                   child: ClipOval(
                     child: Container(
-                      color: Color(0xFF7366D7).withOpacity(0.5)
+                      color: TwitterColors.mainColor.withOpacity(0.5)
                     ),
                   ),
                 ),
@@ -123,7 +124,7 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
                   padding: const EdgeInsets.all(20.0),
                   child: ClipOval(
                     child: Container(
-                      color: Color(0xFF7366D7).withOpacity(0.5)
+                      color: TwitterColors.mainColor.withOpacity(0.5)
                     ),
                   ),
                 ),
@@ -133,7 +134,7 @@ class _GlowingEffectState extends State<GlowingEffect> with TickerProviderStateM
               padding: const EdgeInsets.all(20.0),
               child: ClipOval(
                 child: Container(
-                  color: Color(0xFF7366D7)
+                  color: TwitterColors.mainColor
                 ),
               ),
             ),

@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:twitter_spaces_flutter/helpers/twittercolors.dart';
+import 'package:twitter_spaces_flutter/services/emojiselectorservice.dart';
 import 'package:twitter_spaces_flutter/widgets/glowingeffect.dart';
 import 'package:twitter_spaces_flutter/widgets/twitterspacemodal.dart';
 
@@ -9,7 +12,7 @@ class TwitterSpaceHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 47, 47, 47),
+      backgroundColor: TwitterColors.mainBgColor,
       body: Center(
         child: GlowingEffect(
           onTap: () {
@@ -19,7 +22,12 @@ class TwitterSpaceHome extends StatelessWidget {
               context: context, 
               builder: (context) {
                 return const TwitterSpaceModal();
-              });
+              }
+            ).whenComplete(() {
+              // clean up, i.e: close the emoji selector
+              var emojiSelectorService = Provider.of<EmojiSelectorService>(context, listen: false);
+              emojiSelectorService.setEmojiSelectorVisibility(false);
+            });
           },
         )
       )

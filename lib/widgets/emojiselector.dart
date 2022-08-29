@@ -46,7 +46,7 @@ class _EmojiSelectorState extends State<EmojiSelector> with SingleTickerProvider
         return ScaleTransition(
           alignment: Alignment.bottomRight,
           scale: Tween<double>(begin: 0.0, end: 1.0)
-          .animate(CurvedAnimation(parent: emojiSelectorCtrl, curve: Curves.elasticInOut)),
+          .animate(CurvedAnimation(parent: emojiSelectorCtrl, curve: Curves.easeInOut)),
           child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
