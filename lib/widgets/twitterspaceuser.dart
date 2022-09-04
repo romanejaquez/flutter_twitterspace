@@ -21,7 +21,7 @@ class _TwitterUserState extends State<TwitterUser> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          TwitterUserAvatar(user: widget.userModel),
+          Expanded(child: TwitterUserAvatar(user: widget.userModel)),
           const SizedBox(height: 5),
           Text(widget.userModel.name,
             style: const TextStyle(
