@@ -21,10 +21,10 @@ class TwitterSpace {
   static const _kFontFam = 'TwitterSpace';
   static const String? _kFontPkg = null;
 
-  static const IconData emotion_add = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData emotionadd = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData hide = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData messages = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData mic_off = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData micoff = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData people = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData twitterspace = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData share = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);

@@ -14,7 +14,7 @@ class TwitterUserSpeakingStatus extends StatelessWidget {
     return userModel.isSpeaking ? TwitterSpaceSoundWaves() :
     userModel.isMuted ? Container(
       margin: const EdgeInsets.only(right: 2),
-      child: const Icon(TwitterSpace.mic_off,
+      child: const Icon(TwitterSpace.micoff,
         size: 15,
         color: TwitterColors.micOffColor,
       ),

@@ -28,7 +28,7 @@ class TwitterSpaceFooter extends StatelessWidget {
               onTap: () {}, 
               child: const Padding(
                 padding: EdgeInsets.all(25),
-                child: Icon(TwitterSpace.mic_off, color: TwitterColors.micOffColor))
+                child: Icon(TwitterSpace.micoff, color: TwitterColors.micOffColor))
             ),
           ),
           Expanded(
@@ -42,7 +42,7 @@ class TwitterSpaceFooter extends StatelessWidget {
                     ejService.toggleEmojiSelectorVisibility();
                   },
                   icon: const Icon(
-                    TwitterSpace.emotion_add, 
+                    TwitterSpace.emotionadd, 
                     color: Colors.white, 
                     size: 20
                   )
