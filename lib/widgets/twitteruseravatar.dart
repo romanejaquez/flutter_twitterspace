@@ -27,7 +27,7 @@ class _TwitterUserAvatarState extends State<TwitterUserAvatar> {
         clipBehavior: Clip.none,
         children: [
           ClipOval(
-            child: Image.asset('assets/imgs/' + widget.user.img + '.png',
+            child: Image.asset('assets/imgs/${widget.user.img}.png',
               width: 70,
               height: 70,
               fit: BoxFit.cover

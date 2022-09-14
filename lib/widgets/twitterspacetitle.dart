@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class TwitterSpaceTitle extends StatefulWidget {
@@ -7,7 +6,6 @@ class TwitterSpaceTitle extends StatefulWidget {
   @override
   State<TwitterSpaceTitle> createState() => _TwitterSpaceTitleState();
 }
-
 
 class _TwitterSpaceTitleState extends State<TwitterSpaceTitle> {
   @override

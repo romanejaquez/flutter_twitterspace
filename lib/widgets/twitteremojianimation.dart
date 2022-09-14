@@ -19,9 +19,8 @@ class TwitterEmojiAnimation extends StatefulWidget {
 
 class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with TickerProviderStateMixin {
   
-  late AnimationController emojiCtrl;
-  late AnimationController emojiScaleSmaller;
-  late AnimationController emojiMove;
+  late AnimationController emojiScaleFromCenter;
+  late AnimationController emojiScaleSmallToCorner;
   
   Timer emojiTimer1 = Timer(Duration.zero, () {});
   Timer emojiTimer2 = Timer(Duration.zero, () {});
@@ -31,17 +30,12 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
   void initState() {
     super.initState();
 
-    emojiCtrl = AnimationController(
+    emojiScaleFromCenter = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 250)
     );
 
-    emojiScaleSmaller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 250)
-    );
-
-    emojiMove = AnimationController(
+    emojiScaleSmallToCorner = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 250)
     );
@@ -49,19 +43,19 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
     executeEmojiAnimation();
   }
 
-  void executeEmojiAnimation() {
-    emojiCtrl.forward().then((s) {
+  void executeEmojiAnimation() async {
+
+    // first animation: scale from the center
+    emojiScaleFromCenter.forward().then((s) {
       emojiTimer1 = Timer(const Duration(seconds: 2), () {
-        emojiScaleSmaller.forward().then((f) {
+        emojiScaleSmallToCorner.forward().then((f) {
 
          emojiTimer2 = Timer(const Duration(seconds: 2), () {
-            emojiMove.forward();
-            emojiCtrl.reverse().then((value) {
+            emojiScaleFromCenter.reverse().then((value) {
               
               emojiTimer3 = Timer(const Duration(seconds: 1), () {
-                emojiCtrl.reset();
-                emojiScaleSmaller.reset();
-                emojiMove.reset();
+                emojiScaleFromCenter.reset();
+                emojiScaleSmallToCorner.reset();
 
                 widget.onAnimationDone(widget.key!);
               });
@@ -73,9 +67,8 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
   }
 
   void resetEmojiAnimation() {
-    emojiCtrl.reset();
-    emojiScaleSmaller.reset();
-    emojiMove.reset();
+    emojiScaleFromCenter.reset();
+    emojiScaleSmallToCorner.reset();
 
     emojiTimer1.cancel();
     emojiTimer2.cancel();
@@ -84,9 +77,8 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
 
   @override
   void dispose() {
-    emojiCtrl.dispose();
-    emojiScaleSmaller.dispose();
-    emojiMove.dispose();
+    emojiScaleFromCenter.dispose();
+    emojiScaleSmallToCorner.dispose();
 
     emojiTimer1.cancel();
     emojiTimer2.cancel();
@@ -101,13 +93,13 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
       position: Tween<Offset>(
         begin: const Offset(0.0, 0.0),
         end: const Offset(0.30, -0.30)
-      ).animate(CurvedAnimation(parent: emojiScaleSmaller, curve: Curves.easeInOut)),
+      ).animate(CurvedAnimation(parent: emojiScaleSmallToCorner, curve: Curves.easeInOut)),
       child: ScaleTransition(
         scale: Tween<double>(begin: 1.0, end: 0.5).
-          animate(CurvedAnimation(parent: emojiScaleSmaller, curve: Curves.easeInOut)),
+          animate(CurvedAnimation(parent: emojiScaleSmallToCorner, curve: Curves.easeInOut)),
         child: ScaleTransition(
           scale: Tween<double>(begin: 0.0, end: 1.01).
-          animate(CurvedAnimation(parent: emojiCtrl, curve: Curves.easeInOut)),
+          animate(CurvedAnimation(parent: emojiScaleFromCenter, curve: Curves.easeInOut)),
           child: ClipOval(
             child: Container(
               color: Colors.black,

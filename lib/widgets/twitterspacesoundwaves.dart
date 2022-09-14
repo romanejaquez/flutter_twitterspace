@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:twitter_spaces_flutter/helpers/twittercolors.dart';
 
 class TwitterSpaceSoundWaves extends StatefulWidget {
-  TwitterSpaceSoundWaves({Key? key}) : super(key: key);
+  const TwitterSpaceSoundWaves({Key? key}) : super(key: key);
 
   @override
   State<TwitterSpaceSoundWaves> createState() => _TwitterSpaceSoundWavesState();
@@ -24,6 +24,7 @@ class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with Ti
       upperBound: 10,
       duration: const Duration(milliseconds: 250)
     )..repeat(reverse: true);
+    
     ctrlSide.addListener(() {
       setState(() {});
     });
@@ -34,9 +35,6 @@ class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with Ti
       upperBound: 10,
       duration: const Duration(milliseconds: 250)
     )..repeat(reverse: false);
-    ctrlMiddle.addListener(() {
-      setState(() {});
-    });
     
     barCtrls.add(ctrlSide);
     barCtrls.add(ctrlMiddle);

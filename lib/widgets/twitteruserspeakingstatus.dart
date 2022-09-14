@@ -11,7 +11,7 @@ class TwitterUserSpeakingStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return userModel.isSpeaking ? TwitterSpaceSoundWaves() :
+    return userModel.isSpeaking ? const TwitterSpaceSoundWaves() :
     userModel.isMuted ? Container(
       margin: const EdgeInsets.only(right: 2),
       child: const Icon(TwitterSpace.micoff,
