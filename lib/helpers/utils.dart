@@ -83,39 +83,7 @@ class Utils {
         img: 'user_10',
         isMuted: true,
         isSpeaking: false
-      ),
-      // UserModel(
-      //   uid: '110',
-      //   name: 'Peter',
-      //   title: 'Listener',
-      //   img: 'user_11',
-      //   isMuted: true,
-      //   isSpeaking: false
-      // ),
-      // UserModel(
-      //   uid: '111',
-      //   name: 'Lisa',
-      //   title: 'Listener',
-      //   img: 'user_12',
-      //   isMuted: true,
-      //   isSpeaking: false
-      // ),
-      // UserModel(
-      //   uid: '112',
-      //   name: 'Fey',
-      //   title: 'Listener',
-      //   img: 'user_13',
-      //   isMuted: true,
-      //   isSpeaking: false
-      // ),
-      // UserModel(
-      //   uid: '113',
-      //   name: 'Nairobi',
-      //   title: 'Listener',
-      //   img: 'user_14',
-      //   isMuted: true,
-      //   isSpeaking: false
-      // ),
+      )
     ];
   }
 }

@@ -12,7 +12,6 @@ class TwitterSpaceSoundWaves extends StatefulWidget {
 class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with TickerProviderStateMixin {
   late AnimationController ctrlSide;
   late AnimationController ctrlMiddle;
-  List<AnimationController> barCtrls = [];
 
   @override
   void initState() {
@@ -35,12 +34,6 @@ class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with Ti
       upperBound: 10,
       duration: const Duration(milliseconds: 250)
     )..repeat(reverse: false);
-    
-    barCtrls.add(ctrlSide);
-    barCtrls.add(ctrlMiddle);
-    barCtrls.add(ctrlSide);
-    barCtrls.add(ctrlMiddle);
-    barCtrls.add(ctrlSide);
   }
 
 
@@ -60,7 +53,7 @@ class _TwitterSpaceSoundWavesState extends State<TwitterSpaceSoundWaves> with Ti
           return Container(
             margin: const EdgeInsets.only(left: 1, right: 1),
             width: 3,
-            height: barCtrls[index].value,
+            height: index % 2 == 0 ? ctrlMiddle.value : ctrlSide.value,
             decoration: BoxDecoration(
               color: TwitterColors.mainColor,
               borderRadius: BorderRadius.circular(20)

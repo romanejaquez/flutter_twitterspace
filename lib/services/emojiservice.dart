@@ -15,24 +15,18 @@ class EmojiService extends ChangeNotifier {
   List<int> randomUserIndexes = [];
 
   EmojiService() {
-    
-    var randomUserCount = Random();
-    while (randomUserIndexes.length < Utils.getUsers().length) {
-      int userIndex = randomUserCount.nextInt(Utils.getUsers().length);
-      if (!randomUserIndexes.contains(userIndex)) {
-        randomUserIndexes.add(userIndex);
-      }
-    }
+
+    var users = Utils.getUsers();
 
     int count = 0;
     Timer.periodic(const Duration(seconds: 5), (timer) {
 
-      if (count == randomUserIndexes.length - 1) {
+      if (count == users.length - 1) {
         timer.cancel();
       }
 
       var random = Random();
-      var randomUser = Utils.getUsers()[randomUserIndexes[count]];
+      var randomUser = users[random.nextInt(users.length)];
       var randomEmoji = Emojis.values[random.nextInt(Emojis.values.length)];
       currentMessage = EmojiMessage(uId: randomUser.uid, emoji: randomEmoji);
       count++;

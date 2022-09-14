@@ -10,10 +10,12 @@ class TwitterSpaceHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(icon: const Icon(TwitterSpace.hide, color: Colors.white, size: 12),
-        onPressed: () {
-          Navigator.of(context).pop();
-        }),
+        IconButton(
+          icon: const Icon(TwitterSpace.hide, color: Colors.white, size: 12),
+          onPressed: () {
+            Navigator.of(context).pop();
+          }
+        ),
         Row(
           children: const [
             Icon(TwitterSpace.share, color: Colors.white),
@@ -21,9 +23,10 @@ class TwitterSpaceHeader extends StatelessWidget {
             Icon(TwitterSpace.more, color: Colors.white, size: 30),
             SizedBox(width: 15),
             Text('Leave', style: TextStyle(
-              fontSize: 16,
-              color: Colors.red, fontWeight: FontWeight.bold
-            ))
+                fontSize: 16,
+                color: Colors.red, fontWeight: FontWeight.bold
+              )
+            )
           ],
         )
       ],

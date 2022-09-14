@@ -1,13 +1,10 @@
+
 import 'package:flutter/material.dart';
 
-class TwitterSpaceTitle extends StatefulWidget {
+class TwitterSpaceTitle extends StatelessWidget {
+
   const TwitterSpaceTitle({Key? key}) : super(key: key);
-
-  @override
-  State<TwitterSpaceTitle> createState() => _TwitterSpaceTitleState();
-}
-
-class _TwitterSpaceTitleState extends State<TwitterSpaceTitle> {
+  
   @override
   Widget build(BuildContext context) {
     return Column(

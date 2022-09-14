@@ -58,29 +58,28 @@ class _GlowingEffectState extends State<GlowingEffect> with SingleTickerProvider
                   .animate(CurvedAnimation(
                     parent: glowingCircle, 
                     curve: Interval(index * 0.2, (index * 0.2 + 0.6), curve: Curves.easeInOut))),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ClipOval(
-                      child: Container(
-                        color: TwitterColors.mainColor.withOpacity(0.5)
-                      ),
-                    ),
+                  child: Container(
+                    margin: const EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                    color: TwitterColors.mainColor.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(75)
+                  ),
                   ),
                 ),
               );
             }),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ClipOval(
-                child: Container(
-                  color: TwitterColors.mainColor
-                ),
-              ),
-            ),
             Center(
-              child: Icon(widget.icon, 
-              color: Colors.white,
-              size: widget.size),
+              child: Container(
+                padding: const EdgeInsets.all(30.0),
+                decoration: BoxDecoration(
+                  color: TwitterColors.mainColor,
+                  borderRadius: BorderRadius.circular(75)
+                ),
+                child: Icon(widget.icon, 
+                  color: Colors.white,
+                  size: widget.size
+                )
+              ),
             )
           ],
         )

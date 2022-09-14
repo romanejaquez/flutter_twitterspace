@@ -46,10 +46,8 @@ class _TwitterUserAvatarState extends State<TwitterUserAvatar> {
                     key: emojiKey,
                     emoji: emoji,
                     onAnimationDone: (Key? key) {
-                      if (emojiMsgWidgets.where((e) => e.key == key).isNotEmpty) {
-                        var doneEmoji = emojiMsgWidgets.where((e) => e.key == key).first;
-                        emojiMsgWidgets.remove(doneEmoji);
-                      }
+                      var doneEmoji = emojiMsgWidgets.where((e) => e.key == key).first;
+                      emojiMsgWidgets.remove(doneEmoji);
                     }
                   )
                 );
