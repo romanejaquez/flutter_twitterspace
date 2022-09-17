@@ -10,34 +10,32 @@ class TwitterUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TwitterUserAvatar(user: userModel),
-          const SizedBox(height: 5),
-          Text(userModel.name,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold
-            )
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TwitterUserSpeakingStatus(userModel: userModel),
-              Text(userModel.title,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.grey,
-                )
-              )
-            ],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        TwitterUserAvatar(user: userModel),
+        const SizedBox(height: 5),
+        Text(userModel.name,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
           )
-        ],
-      ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TwitterUserSpeakingStatus(userModel: userModel),
+            Text(userModel.title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.grey,
+              )
+            )
+          ],
+        )
+      ],
     );
   }
 }

@@ -12,8 +12,6 @@ class EmojiService extends ChangeNotifier {
     uId: '-1'
   );
   
-  List<int> randomUserIndexes = [];
-
   EmojiService() {
 
     var users = Utils.getUsers();

@@ -43,7 +43,7 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
     executeEmojiAnimation();
   }
 
-  void executeEmojiAnimation() async {
+  void executeEmojiAnimation() {
 
     // first animation: scale from the center
     emojiScaleFromCenter.forward().then((s) {

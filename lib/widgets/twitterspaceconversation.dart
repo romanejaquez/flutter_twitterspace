@@ -8,18 +8,16 @@ class TwitterSpaceConversation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: GridView.count(
-        childAspectRatio: 0.80,
-        crossAxisCount: 4,
-        mainAxisSpacing: 40,
-        children: List.generate(Utils.getUsers().length,
-          (index) {
-      
-            var userModel = Utils.getUsers()[index];
-            return TwitterUser(userModel: userModel);
-          })
-      ),
+    return GridView.count(
+      childAspectRatio: 0.80,
+      crossAxisCount: 4,
+      mainAxisSpacing: 40,
+      children: List.generate(Utils.getUsers().length,
+        (index) {
+    
+          var userModel = Utils.getUsers()[index];
+          return TwitterUser(userModel: userModel);
+        })
     );
   }
 }
