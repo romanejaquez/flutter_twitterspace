@@ -2,7 +2,7 @@
 
 A simple UI implementation of how the Twitter Space UI feature could be implemented using Flutter.
 
-![Flutter TwitterSpaces](https://firebasestorage.googleapis.com/v0/b/romanjustcodes.appspot.com/o/github%2Fflutter_twitterspace.png?alt=media&token=56350a50-c4c0-42cf-b504-bd72202bf54f)
+![Flutter TwitterSpaces](https://romanejaquez.github.io/imghosting/flutter_twitterspace.gif)
 
 This sample project shows:
 - a list of Twitter users
