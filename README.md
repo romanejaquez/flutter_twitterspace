@@ -4,8 +4,8 @@ A simple UI implementation of how the Twitter Space UI feature could be implemen
 
 This sample project shows:
 - a list of Twitter users
-- ability to randomly show emoji notifications (one per user)
-- Twitter Space emoji selector (only one user)
+- ability to randomly show emoji notifications (one per user in a periodic fashion)
+- Twitter Space emoji selector (for only one user - demo)
 - displayed in a modal fashion
 
 #### Please don't forget to follow me on social media:
