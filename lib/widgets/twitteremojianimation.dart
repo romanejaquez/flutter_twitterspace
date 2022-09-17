@@ -48,15 +48,22 @@ class _TwitterEmojiAnimationState extends State<TwitterEmojiAnimation> with Tick
     // first animation: scale from the center
     emojiScaleFromCenter.forward().then((s) {
       emojiTimer1 = Timer(const Duration(seconds: 2), () {
+        
+        // second animation: scale to corner
         emojiScaleSmallToCorner.forward().then((f) {
 
          emojiTimer2 = Timer(const Duration(seconds: 2), () {
+            
+            // third animation: reverse the emoji scale
             emojiScaleFromCenter.reverse().then((value) {
               
               emojiTimer3 = Timer(const Duration(seconds: 1), () {
+                
+                // at the end, reset both animations
                 emojiScaleFromCenter.reset();
                 emojiScaleSmallToCorner.reset();
 
+                // notify the parent to remove this widget
                 widget.onAnimationDone(widget.key!);
               });
             });
